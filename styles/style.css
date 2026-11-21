@@ -1,0 +1,10 @@
+/* Contact page */
+.contact-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; }
+.card { background: #fff; border: 1px solid #d9d4c7; padding: 20px; }
+form label { display: block; margin: 12px 0 4px; font-weight: bold; }
+form input, form textarea { width: 100%; padding: 10px; border: 1px solid #d9d4c7; font: inherit; }
+form button { margin-top: 16px; padding: 10px 22px; border: 0; background: #1f5e4b; color: #fff; font: inherit; cursor: pointer; }
+
+@media (max-width: 700px) {
+  .contact-grid { grid-template-columns: 1fr; }
+}
