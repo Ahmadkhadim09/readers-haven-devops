@@ -1,0 +1,11 @@
+{
+  "name": "readers-haven-library",
+  "version": "1.0.0",
+  "private": true,
+  "scripts": {
+    "build": "parcel build \"src/*.html\" --dist-dir dist --no-cache --public-url ./"
+  },
+  "devDependencies": {
+    "parcel": "^2.16.4"
+  }
+}
