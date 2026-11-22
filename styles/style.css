@@ -1,136 +1,44 @@
-/* ===== Collections page: append this to the bottom of styles/style.css ===== */
-
-.collections-page {
-  --forest: #16332b;
-  --mist: #eef1ec;
-  --ink: #1d2a26;
-  --brass: #b8893a;
-  --walnut: #4a3626;
-  --c1: #2f4b6e;
-  --c2: #5b2a4e;
-  --c3: #1f6f5c;
-
-  margin: 0;
-  background: var(--mist);
-  color: var(--ink);
-  font-family: system-ui, -apple-system, "Segoe UI", sans-serif;
-  line-height: 1.6;
+/* ===== Collections page ===== */
+.collections-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 24px;
+  margin-top: 24px;
 }
 
-/* ---------- Header and nav ---------- */
-.collections-page .site-header {
-  display: flex;
-  flex-wrap: wrap;
-  align-items: center;
-  justify-content: space-between;
-  gap: 1rem;
-  padding: 1.1rem clamp(1rem, 5vw, 3rem);
-  background: var(--forest);
+.collection-card {
+  background: #fff;
+  border: 1px solid #d9d4c7;
+  border-top: 4px solid #d9a21b;
+  padding: 20px;
 }
 
-.collections-page .logo {
-  color: #fff;
-  font-family: Georgia, "Iowan Old Style", serif;
-  font-size: 1.4rem;
-  text-decoration: none;
+.collection-card h2 { color: #1f5e4b; }
+.collection-card ul { margin: 0; padding-left: 20px; }
+
+@media (max-width: 600px) {
+  .collections-grid { grid-template-columns: 1fr; }
 }
 
-.collections-page .site-nav {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 1.5rem;
-}
+/* ===== Collections page: bookshelf ===== */
+.collections-page .intro { max-width: 60ch; margin-bottom: 2rem; }
+.collections-page .intro h1 { font-size: clamp(2.2rem, 6vw, 3.6rem); color: #163f33; }
+.collections-page .intro p { font-size: 1.1rem; margin: 0; }
 
-.collections-page .site-nav a {
-  position: relative;
-  padding: 0.25rem 0;
-  color: #d9e4df;
-  text-decoration: none;
-  transition: color 0.2s;
-}
-
-.collections-page .site-nav a::after {
-  content: "";
-  position: absolute;
-  left: 0;
-  bottom: -2px;
-  width: 100%;
-  height: 2px;
-  background: var(--brass);
-  transform: scaleX(0);
-  transform-origin: left;
-  transition: transform 0.3s ease;
-}
-
-.collections-page .site-nav a:hover,
-.collections-page .site-nav a[aria-current="page"] {
-  color: #fff;
-}
-
-.collections-page .site-nav a:hover::after,
-.collections-page .site-nav a[aria-current="page"]::after {
-  transform: scaleX(1);
-}
-
-.collections-page a:focus-visible,
-.collections-page .books li:focus-visible {
-  outline: 3px solid var(--brass);
-  outline-offset: 4px;
-}
-
-/* ---------- Intro ---------- */
-.collections-page .intro {
-  max-width: 1100px;
-  margin: 0 auto;
-  padding: clamp(2.5rem, 7vw, 5rem) clamp(1rem, 5vw, 3rem) 1rem;
-}
-
-.collections-page .intro h1 {
-  margin: 0 0 0.75rem;
-  max-width: 14ch;
-  font-family: Georgia, "Iowan Old Style", serif;
-  font-size: clamp(2.4rem, 7vw, 4.5rem);
-  font-weight: 700;
-  line-height: 1.05;
-  color: var(--forest);
-}
-
-.collections-page .intro p {
-  max-width: 52ch;
-  margin: 0;
-  font-size: 1.1rem;
-}
-
-/* ---------- Shelves ---------- */
 .collections-page .category-grid {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
   gap: 3rem 2.5rem;
-  max-width: 1100px;
-  margin: 0 auto;
-  padding: 2rem clamp(1rem, 5vw, 3rem) 4rem;
 }
 
-.collections-page .category:nth-child(even) {
-  --c1: #8c6a2b;
-  --c2: #2f4b6e;
-  --c3: #5b2a4e;
-}
-
+.collections-page .category { --c1: #1f5e4b; --c2: #243b55; --c3: #8a5a1c; }
+.collections-page .category:nth-child(even) { --c1: #243b55; --c2: #8a5a1c; --c3: #1f5e4b; }
 .collections-page .category:nth-child(2) { --s: 1; }
 .collections-page .category:nth-child(3) { --s: 2; }
 .collections-page .category:nth-child(4) { --s: 3; }
 
-.collections-page .category h2 {
-  margin: 0;
-  font-family: Georgia, "Iowan Old Style", serif;
-  font-size: 1.8rem;
-  color: var(--forest);
-}
-
-.collections-page .category p {
-  margin: 0.2rem 0 1.5rem;
-}
+.collections-page .category h2 { font-size: 1.7rem; color: #163f33; margin-bottom: 0.1em; }
+.collections-page .category p { margin: 0 0 1.5rem; }
 
 .collections-page .books {
   display: flex;
@@ -140,18 +48,15 @@
   margin: 0;
   padding: 0 1rem;
   list-style: none;
-  border-bottom: 14px solid var(--walnut);
+  border-bottom: 14px solid #4a3626;
   box-shadow: 0 14px 16px -10px rgba(0, 0, 0, 0.4);
 }
 
-/* ---------- Book spines ---------- */
 .collections-page .books li {
   --h: 260px;
   --c: var(--c1);
   --k: 0;
-
   position: relative;
-  box-sizing: border-box;
   width: 60px;
   height: var(--h);
   padding: 1.4rem 0.4rem 0.8rem;
@@ -160,7 +65,7 @@
     linear-gradient(90deg, rgba(255, 255, 255, 0.18), transparent 25%, rgba(0, 0, 0, 0.22)),
     var(--c);
   color: #fff;
-  font-family: Georgia, "Iowan Old Style", serif;
+  font-family: Georgia, "Times New Roman", serif;
   font-size: 0.95rem;
   letter-spacing: 0.03em;
   text-align: center;
@@ -168,8 +73,7 @@
   cursor: pointer;
   transform-origin: bottom center;
   transition: transform 0.35s cubic-bezier(0.2, 0.8, 0.2, 1), box-shadow 0.35s;
-
-  /* One orchestrated moment: books slide onto the shelf in order */
+  /* Books slide onto the shelf in order when the page loads */
   animation: shelve 0.8s cubic-bezier(0.2, 0.8, 0.2, 1) backwards;
   animation-delay: calc(var(--s, 0) * 0.25s + var(--k) * 0.12s);
 }
@@ -181,7 +85,7 @@
   left: 0;
   width: 100%;
   height: 4px;
-  background: var(--brass);
+  background: #d9a21b;
 }
 
 .collections-page .books li:nth-child(1) { --h: 260px; --c: var(--c1); --k: 0; }
@@ -192,59 +96,19 @@
 .collections-page .books li:focus-visible {
   transform: translateY(-16px) rotate(-3deg);
   box-shadow: 8px 10px 18px rgba(0, 0, 0, 0.35);
+  outline: none;
 }
 
 @keyframes shelve {
-  from {
-    opacity: 0;
-    transform: translateY(-40px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
+  from { opacity: 0; transform: translateY(-40px); }
+  to   { opacity: 1; transform: translateY(0); }
 }
 
-/* ---------- Footer ---------- */
-.collections-page .site-footer {
-  padding: 1.5rem;
-  background: var(--forest);
-  color: #d9e4df;
-  text-align: center;
-}
-
-.collections-page .site-footer p {
-  margin: 0;
-}
-
-/* ---------- Responsive ---------- */
 @media (max-width: 600px) {
-  .collections-page .category-grid {
-    grid-template-columns: 1fr;
-  }
-
-  .collections-page .site-header {
-    justify-content: center;
-    text-align: center;
-  }
-
-  .collections-page .site-nav {
-    justify-content: center;
-    gap: 1rem;
-  }
-
-  .collections-page .books li {
-    width: 52px;
-    font-size: 0.85rem;
-  }
+  .collections-page .category-grid { grid-template-columns: 1fr; }
+  .collections-page .books li { width: 52px; font-size: 0.85rem; }
 }
 
-/* ---------- Respect reduced motion ---------- */
 @media (prefers-reduced-motion: reduce) {
-  .collections-page .books li,
-  .collections-page .site-nav a,
-  .collections-page .site-nav a::after {
-    animation: none;
-    transition: none;
-  }
+  .collections-page .books li { animation: none; transition: none; }
 }
